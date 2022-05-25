@@ -1,5 +1,6 @@
 from rest_framework.permissions import AllowAny
-from .serializers import LoginSerializer, RegisterSerializer
+from .serializers import LoginSerializer
+from user.serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import viewsets
 from user.models import User
@@ -13,7 +14,7 @@ class LoginViewSet(TokenObtainPairView):
 class RegisterViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [AllowAny]
-    serializer_class = RegisterSerializer
+    serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
         permission_classes = [AllowAny]
