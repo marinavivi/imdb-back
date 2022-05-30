@@ -49,6 +49,8 @@ SIMPLE_JWT = {
 INSTALLED_APPS = [
     'rest_framework',
     'user',
+    'movie',
+    'genre',
     'auth.apps.AuthConfig',
     'django.contrib.admin',
     'django.contrib.auth',

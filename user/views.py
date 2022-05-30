@@ -13,7 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
     def retrieve(self, request, pk=None):
-        permission_classes = [IsAuthenticated]
+        permission_classes = [AllowAny]
         if request.user and pk == 'me':
             return Response(UserSerializer(request.user).data)
         return super(UserViewSet, self).retrieve(request, pk)

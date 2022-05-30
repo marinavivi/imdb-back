@@ -19,10 +19,12 @@ urlpatterns = [
 
     path('login/', LoginViewSet.as_view(), name='login_viewset'),
     path('register/', RegisterViewSet.as_view({'post': 'create'}), name='register_viewset'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path('',include('user.urls')),
+    path('',include('movie.urls')),
+    path('',include('genre.urls')),
     
 ]
 
