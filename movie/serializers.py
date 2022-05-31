@@ -16,6 +16,7 @@ class MovieSerializer(serializers.ModelSerializer):
             title=validated_data['title'],
             description=validated_data['description'],
             coverImage=validated_data['coverImage'],
+            genre=validated_data['genre']
         )
         movie.save()
 

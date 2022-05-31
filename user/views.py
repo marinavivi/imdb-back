@@ -4,6 +4,7 @@ from .serializers import UserSerializer
 from rest_framework import viewsets
 from .models import User
 from rest_framework.response import Response
+from rest_framework import status
 
 class UserViewSet(viewsets.ModelViewSet):
     
@@ -11,6 +12,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
     permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        permission_classes = [AllowAny]
+        serializer = self.get_serializer(data=request.data)
+        
+        serializer.is_valid(raise_exception=True)
+        serializer.save(created_by=self.request.user)
+        
+        return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):
         permission_classes = [AllowAny]

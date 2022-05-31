@@ -15,4 +15,4 @@ def create(self, request, *args, **kwargs):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
-        return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
