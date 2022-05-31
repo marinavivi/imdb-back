@@ -8,6 +8,11 @@ class LoginSerializer(TokenObtainPairSerializer):
         model = User
         fields = ['email', 'password']
 
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        return data
+
     def get_token(cls, user):
         
         token = super(LoginSerializer, cls).get_token(user)
